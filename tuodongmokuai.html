@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/Swiper/3.4.1/css/swiper.min.css">
+    <title>Document</title>
+    <style>
+        .banner{position: relative}
+        .banner .png_2{
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 800px;
+        }
+        .banner2{position: relative}
+        .banner2 a .png_1{
+            position: absolute;
+            top: 0;
+            left: -100px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+<div class="banner-container swiper-container">
+    <div class="swiper-wrapper">
+        <div class="banner-slide swiper-slide banner">
+            <a href="javascript:viod(0);">
+                <img class="png_1" src="img/1.0.png" alt="">
+                <img class="png_2" src="img/1.1.png" alt="">
+            </a>
+        </div>
+        <div class="banner-slide swiper-slide">
+            <a href="javascript:viod(0);"><img src="img/banner222.png" alt=""></a>
+        </div>
+        <div class="banner-slide swiper-slide banner2">
+            <a href="javascript:viod(0);">
+                <img class="png_1" src="img/banner22.png" alt="">
+                <img class="png_2" src="img/-banner33.png" alt="">
+            </a>
+        </div>
+    </div>
+    <!--需要焦点按钮时加这段div-->
+    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+        <span class="swiper-pagination-bullet"></span>
+        <span class="swiper-pagination-bullet"></span>
+        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+    </div>
+</div>
+<script src="jquery-1.9.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/Swiper/3.4.1/js/swiper.min.js"></script>
+<script type="text/javascript">
+            var mySwiper = new Swiper('.banner-container',{
+                loop: true, //用来循环播放
+                pagination: '.banner-pagination', //显示焦点按钮
+                paginationClickable: '.banner-pagination', //焦点按钮可点击
+            });
+            setInterval("mySwiper.slideNext()", 8000
+
+            ); //加定时器的目的是：点击焦点按钮后，自动播放你所点击的那张图片的下一张
+
+        </script>
+</body>
+</html>

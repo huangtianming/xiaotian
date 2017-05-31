@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+    <style>
+        #tab{
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);/*位移 transform：踹思佛恩么  translate：踹思类特 */
+        }
+        .title{
+            width: 600px;
+            height: 50px;
+            border: 1px solid #999999;
+        }
+        span{
+            width: 140px;
+            height: 50px;
+            display: inline-block;
+            line-height: 50px;
+            text-align: center;
+            cursor:pointer ;/*cursor扣收 pointer坡特尔*/
+        }
+        .color{
+            background: #999999;
+        }
+        .content2{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="tab">
+        <div class="title">
+            <span class="color">选项卡1</span>
+            <span>选项卡2</span>
+            <span>选项卡3</span>
+            <span>选项卡4</span>
+        </div>
+        <div class="content">
+            <div class="content1">
+                选项卡1
+            </div>
+            <div class="content2">
+                选项卡2
+            </div>
+            <div class="content2">
+                选项卡3
+            </div>
+            <div class="content2">
+                选项卡4
+            </div>
+        </div>
+    </div>
+
+
+    <script src="jquery-1.9.1/jquery.min.js"></script>
+
+    <script>
+
+ /*       $("#div").click(function () {
+            alert("div");
+        });
+        $(".p2").click(function () {
+            alert("p");
+            //return false;//阻止时间冒泡1
+            event.stopPropagation();//阻止时间冒泡2
+        });*/
+        var $div_span = $("span");
+        //console.log($div_span);
+        $div_span.mouseover(function(){
+            $(this).addClass('color').siblings().removeClass('color');
+                    //siblings() 方法返回被选元素的所有同级元素。
+         var index = $div_span.index(this);
+          $('.content div').eq(index).show().siblings().hide();
+        })
+
+
+        var arr = [5,4,5,8,9,22,11,8,11,22,9],new_arr=[];
+//            new_arr.indexOf(arr[i])==-1;
+//        console.log(new_arr);
+        for(var i=0;i<arr.length;i++){
+            if(new_arr.indexOf(arr[i])==-1){//indexOf 返回字符串首次出现的位置   没有就返回-1
+                //new_arr.push(arr[i]);
+                console.log(new_arr.indexOf(arr[i])==-1);
+            }
+        }
+        console.log(new_arr);//去掉数组中的重复字符串
+
+
+      /*  var arr = [5,4,5,8,9,22,11,8,11,22,9]; 删除 增加 替换
+        //arr.splice(3,2);   //splice(3,2)从第3个后面【删除两个】
+        //arr.splice(3,2,20,55);//splice(3,2,20,55)从第3个后面的2个【替换下】
+        //arr.splice(3,0,20,55);//splice(3,2,20,55)从第3个后面的第0个位置【添加】
+        console.log(arr[8]);*/
+
+    /*  var d  = new Date();时间
+       d.setDate(d.getMonth()+1);
+        console.log( d);*/
+var a =[1,54,66,88,99,101,54,88],b=[];
+for(var i=0; i<a.length; i++){
+    if(b.indexOf(a[i])==-1){
+        b.push(a[i]);
+
+    }
+}
+ console.log(b);
+
+    </script>
+</body>
+</html>

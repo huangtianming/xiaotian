@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration:none;
+		color: #fff
+	}
+	a:hover {
+		color: yellow;
+	}
+	body{
+		background-color: #345;
+	}       
+	*{
+		margin:0;
+		padding: 0;
+	}       
+	.fito2{
+		width:200px;
+	}     
+	.fito2 > a{
+		display:block;
+		height:30px;
+		background-color: red;
+		border-left:12px solid black;
+		padding-left:8px;
+		line-height: 30px;
+		border-bottom: 1px solid #fff;
+	}                
+	.fito3 a{
+		background-color: blue;
+		display:block;
+		border-bottom: 1px solid #fff;
+		height: 30px;
+		border-left:35px solid yellow;
+		padding-left:8px;
+		line-height: 30px;
+	}                
+	</style>
+</head>
+<body>
+	<div>
+		<ul class="fito1">
+			<li class="fito2"><a href="javascript:;">体育明星</a>
+
+			 <ul class="fito3">
+				<li><a href="javascript:;">姚明</a></li>
+				<li><a href="javascript:;">科比</a></li>
+				<li><a href="javascript:;">詹姆斯</a></li>
+			 </ul>
+			</li>
+		</ul>
+		<ul class="fito1">
+			<li class="fito2"><a href="javascript:;">电影明星</a>
+				
+				<ul class="fito3">
+					<li><a href="javascript:;">成龙</a></li>
+					<li><a href="javascript:;">黄渤</a></li>
+					<li><a href="javascript:;">李连杰</a></li>
+				</ul>
+
+			</li>
+		</ul>
+		<ul class="fito1">
+			<li class="fito2"><a href="javascript:;">拳击明星</a>
+					<ul class="fito3">
+						<li><a href="javascript:;">武圣</a></li>
+						<li><a href="javascript:;">程刚</a></li>
+						<li><a href="javascript:;">大卫</a></li>
+					</ul>
+
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="../jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			 $('.fito3').hide();
+			 $('.fito2 > a').toggle(function(){ //toggle()  是隐藏 在显示
+			 	$(this).next().stop(false,true).slideDown(); //next() 下一个  
+			 	//slideDown()以滑动的方式显示 slideUp()以滑动的方式隐藏 
+			 var index = $('.fito3').index($(this).next());
+			 $('.fito3').not(":eq("+ index +")").slideUp();
+			 },function(){ //$('p').not('.class').css('background','red') 
+			 				//是给所有的p 不是 class='class' 的背景色加红 
+			 				//意思是p 并且class=’class‘ 不要颜色 其他的p 都加红色
+			 	$(this).next().stop(false,true).slideUp();
+							//stop(false,true)  是让动画只有一次
+			 })
+		});
+	</script>
+</body>
+</html>

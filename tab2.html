@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,li{margin: 0;padding:0;list-style: none}
+        .nav{
+            width: 100%;
+        }
+        .content{
+            width: 1200px;
+            margin: auto;
+            /*overflow: hidden;*/
+        }
+        .content li{
+            display: inline-block;
+        }
+        .content li img{
+            width: 200px;
+            height: 100px;
+        }
+        .content .haed{
+            width: 1200px;
+            height: 500px;
+        }
+        .content .haed img{
+            width: 1200px;
+            float: left;
+            position: absolute;
+        }
+        .content .haed .img{
+            display: none;
+        }
+
+    </style>
+</head>
+<body style="margin: 0">
+    <div class="nav">
+        <div class="content">
+            <div class="haed">
+                <img class="imgs" src="img/1.jpg" alt="" >
+                <img class="img" src="img/2.jpg" alt="">
+                <img class="img" src="img/3.jpg" alt="">
+                <img class="img" src="img/003.jpeg" alt="">
+                <img class="imgs" src="img/004.jpeg" alt="">
+            </div>
+            <ul>
+                <li><img src="img/1.jpg" alt=""></li>
+                <li><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/003.jpeg" alt=""></li>
+                <li><img src="img/004.jpeg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <script src="jquery-1.9.1/jquery.min.js"></script>
+    <script>
+        $(function (){
+            var a = $('li');
+            a.click(function () {
+               var index = a.index(this);
+                alert(index);
+                $(".haed img").eq(index).show().siblings().hide();
+            })
+        })
+    </script>
+</body>
+</html>

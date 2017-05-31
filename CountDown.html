@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" ng-app="mayModel">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+    <style>
+      .ng-cloak{
+           display: none;
+        }
+    </style>
+</head>
+<body ng-controller="indexCtrl">
+
+<div ng-cloak class="ng-cloak">
+    {{model.CountDown}}
+</div>
+<span>{{model.timeout}}</span>
+<!--<p>{{ model.closure }}</p>-->
+<div id="box">yes</div>
+<script src="angular.js"></script>
+<script>
+//    var Id = document.getElementById('box').innerHTML='nihso';
+//    alert(Id);
+    angular.module('mayModel',[]).controller('indexCtrl',['$scope','$interval','$timeout',function ($scope,$interval,$timeout) {
+        $scope.model ={
+            CountDown:'5s',
+            timeout:'10s'
+            //closure:'12s'
+        };
+            $scope.b = $interval(function () {
+                $scope.model.CountDown = parseInt($scope.model.CountDown) -1 + "s";
+                if (parseInt($scope.model.CountDown) <= 0){
+                    $interval.cancel($scope.b);
+                }
+            },1000);
+        /*  这是用$interval    */
+
+      function fun() {
+          if(parseInt($scope.model.timeout) > 0){
+              $scope.v = $timeout(function () {
+                  $scope.model.timeout = parseInt($scope.model.timeout) -1 + "s";
+                  $timeout.cancel($scope.v);
+                  fun();
+              },1000)
+          }
+
+      }
+        fun();  //这里用到递归了
+        /*  这是用$timrout    */
+        /*  $interval 和 $timrout  区别
+          *
+           * $interval 每隔一秒就执行一次
+           *
+           *  $timrout  只执行一次
+           * */
+        function textFun1() {
+            var text3 = 6;
+            function textFun2() {
+                if(text3 > 1){
+                    $scope.box = $timeout(function () {
+                        text3 = text3-1;
+                        textFun2();
+                    },1000)
+                }
+                //console.log(text3);
+            }
+            return textFun2;
+        }
+       var b = textFun1();
+        //console.log( b() );
+
+    }]);   //使用闭包来做倒计时
+
+   /* var a = [];  //  判断js的数组类型  其他的判断数据类型 直接用typeof就可以了
+    console.log(a instanceof Array)*///Array  噢问
+    /* var a = {age:'12',date:"2017"};  //  判断json 类型
+     console.log(a instanceof Object)*////Array  噢问
+
+//    function myFunction(name,job)
+//    {
+//        alert("Welcome " + name + ", the " + job);
+//
+//    }
+//     myFunction(1,2);
+   //alert(b);
+/*   var fun = function (){
+        var a = 6;
+       return a;
+    }
+   var b = fun();
+    console.log(b);*/  //有返回值的函数
+
+</script>
+</body>
+</html>

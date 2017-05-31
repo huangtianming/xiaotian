@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0px;
+			margin:0px;
+		}
+		body{
+			background-color: #865;
+		}
+		div{
+			width: 600px;
+			margin:0 auto;
+			position: relative;
+		}
+
+		.jp{
+			position:absolute;	
+		}
+		
+		.btn{
+			background:rgba(0,0,0,0.5); /*背景的透明度*/
+			width: 40px;
+			height: 90px;
+			position: absolute;
+			top:90px;
+			/*left: 380px;*/
+			line-height: 90px;
+			text-align: center;
+			font-size: 40px;
+			cursor: pointer; /*鼠标放上 变手 的形状*/
+			/*display:none;*/
+		
+		}
+		.btn2{
+			background:rgba(0,0,0,0.5);
+			width: 40px;
+			height: 90px;
+			position: absolute;
+			top:90px;
+			left: 561px;
+			line-height: 90px;
+			text-align: center;
+			font-size: 40px;
+
+		}
+
+		.yuan{
+		
+			height: 30px;
+			position: absolute;
+			top: 240px;
+			left: 200px;	
+		}
+		.ul{
+			list-style: none;
+			
+		}
+		.ul li{
+			float:left;
+			line-height: 30px;
+			text-align: center;
+			width: 30px;
+			margin-left: 10px;
+			background-color: red;
+			border-radius: 100%;
+			cursor: pointer;	/*鼠标放上 变手 的形状*/
+			color: #fff;
+		}
+		.ul .wan{
+			background-color:black;
+		}
+		</style>
+</head>
+<body>
+	<div>
+		<div id="lunbo">
+
+			<img class="jp" src="..\img/lunbo1.png">
+			<img class="jp" src="..\img/lunbo2.png">
+			<img class="jp" src="..\img/lunbo3.png">
+			<img class="jp" src="..\img/lunbo4.png">
+			<img class="jp" src="..\img/lunbo5.png">
+			<img class="jp" src="..\img/lunbo6.png">
+
+		</div>
+		<div class="btn btn1"><</div>
+		<div class="btn btn2">></div>
+
+		<div class="yuan">
+			<ul class="ul">
+				<li class="li wan">1</li>
+				<li class="li">2</li>
+				<li class="li">3</li>
+				<li class="li">4</li>
+				<li class="li">5</li>
+			</ul>
+		</div>
+
+	</div>
+
+	
+	<script type="text/javascript" src="../jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+		var i=0;
+		var timer;
+		$(function(){
+			 // $('#lunbo').hover(function(){$('.btn').show();},function(){$('.btn').hide();});	
+		
+			$('.jp').eq(0).show().siblings().hide();//siblings() 是其他的都隐藏
+				showTimer();
+			$('.li').hover(function(){
+				i = $(this).index();
+				show(); //调用下面的方法
+				clearInterval(timer); //清除定时器
+			},function(){
+				showTimer(); //调用下面的方法
+			})
+			
+			$('.btn1').click(function(){
+				clearInterval(timer);
+				if (i==0) {
+					i=6;
+				}
+				i--;
+				show();
+				showTimer();
+			})
+			
+			$('.btn2').click(function(){
+				clearInterval(timer);
+				if (i==5) {
+					i=-1;
+				}
+				i++;
+				show();
+				showTimer();
+			})
+	});
+			function show(){
+			$('.jp').eq(i).fadeIn().siblings().fadeOut();
+					//fadeIn()  是渐变 的显示  如果用show()的效果 会没那么好看
+					//fadeuot() 是渐变 的隐藏  如果用hide()的效果 会没那么好看
+			$('.li').eq(i).addClass('wan').siblings().removeClass('wan');
+			}  
+		
+			function showTimer(){
+			timer=setInterval(function(){ //setInterval()  是定时器 开启
+				i++;
+				if (i==6) {
+				i=0;
+			}	
+				show();
+			},3000);
+		}
+	</script>
+</body>
+</html>

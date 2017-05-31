@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        #banner{
+            margin: auto;
+            width: 1200px;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+        }
+        img{
+            float: left;
+            display: block;
+        }
+        ul{
+            font-size: 60px!important;
+            position: absolute;
+            top:0;
+            color: red;
+            z-index: 999999;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+
+        <img src="http://comsite-static.beiwee.com/heiheSocial/20170104/b7ccf955121ed1fabd58c4c6197a5846ac9c3700.jpeg" alt="">
+        <img src="http://comsite-static.beiwee.com/heiheSocial/20170104/787fc4f2c55ac52b74d09378608eedd72d7339b4.jpeg" alt="">
+        <img src="http://comsite-static.beiwee.com/heiheSocial/20170104/d4a7cdd1f163331a43bba4d5e4267f0ac58ea1f6.jpeg" alt="">
+        <img src="http://comsite-static.beiwee.com/heiheSocial/20170104/97dea1296c5cbe116e75aacbfdd70d8e4d90ab93.jpeg" alt="">
+        <img src="http://comsite-static.beiwee.com/heiheSocial/20170104/97dea1296c5cbe116e75aacbfdd70d8e4d90ab93.jpeg" alt="">
+
+    </div>
+    <div class="list" style="line">
+        <ul style="font-size: 20px">
+            <li> < </li>
+            <li> > </li>
+        </ul>
+    </div>
+
+    <span>这样吗</span>
+    <div id="box">
+        <p>开始</p>
+        <h1>nihao</h1>
+    </div>
+    <script src="jquery-1.9.1/jquery.min.js"></script>
+    <script>
+        var a = $('#box').append("<p>sd</p>");
+        alert(a);
+        var timer;
+        var i=0;
+        $(function () {
+            $('img').eq(0).show().siblings().hide();
+            showtimer();
+        });
+        function  show() {
+            $('img').eq(i).fadeIn().siblings().fadeOut();//03eq(i)现在就是1显示其他的在隐藏
+
+        }
+        function showtimer(){
+            timer=setInterval(function(){
+                i++;//02  i++  是第二张图
+                if (i==5) {
+                    i=0;
+                }
+                show();
+
+            },3000);
+        }
+
+
+//        var j =10;
+//        fn();
+//        function fn() {
+//            var j = 10;
+//            j+=10;
+//            alert(j);
+//            //return j;
+//        }
+//
+//        alert(j);
+        //alert(fn()+10);
+
+
+//        var arr = ['a','b','c','d','b','e','d'], new_arr=[];
+//
+//        for(var i=0;i<arr.length;i++){
+//            if(new_arr.indexOf(arr[i])==-1){
+//                new_arr.push(arr[i])
+//            }
+//        }
+//        console.log(new_arr);
+
+      /*  var haorooms=[]; //这是判断js变量是否是数组类型
+        console.log([] instanceof Array);*/
+      var list = [0,1,2].unshift(3,4);
+
+        console.log(list);
+    </script>
+</body>
+</html>
